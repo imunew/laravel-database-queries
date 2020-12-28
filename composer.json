@@ -1,0 +1,52 @@
+{
+  "name": "imunew/laravel-database-queries",
+  "authors": [
+    {
+      "name": "imunew",
+      "email": "imunew@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^7.0|^8.0",
+    "ext-json": "*",
+    "illuminate/support": "^5.5|^6|^7|^8"
+  },
+  "require-dev": {
+    "laravel/legacy-factories": "^1.0.4",
+    "orchestra/testbench": "^5.1|^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Imunew\\Laravel\\Database\\Queries\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/Tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Imunew\\Laravel\\Database\\Queries\\Providers\\ServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "cs-fixer-check": [
+      "PHP_CS_FIXER_IGNORE_ENV=1 ~/.composer/vendor/bin/php-cs-fixer fix --dry-run -v"
+    ],
+    "cs-fixer-fix": [
+      "PHP_CS_FIXER_IGNORE_ENV=1 ~/.composer/vendor/bin/php-cs-fixer fix --diff -v"
+    ],
+    "test": [
+      "phpdbg -qrr vendor/bin/phpunit"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

@@ -1,0 +1,34 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyModelNamespace;
+use Imunew\Laravel\Database\Queries\Query;
+
+/**
+ * Class DummyClass
+ * @package DummyNamespace
+ *
+ * @mixin DummyModelClass
+ */
+class DummyClass extends Query
+{
+    /**
+     * DummyClass constructor.
+     * @param array $parameters
+     * @param array $with
+     */
+    public function __construct(array $parameters = [], array $with = [])
+    {
+        parent::__construct(DummyModelClass::class, $parameters, $with);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function buildQuery(array $parameters)
+    {
+        // TODO: Implement buildQuery() method.
+        return $this;
+    }
+}
