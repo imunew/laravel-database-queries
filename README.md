@@ -10,6 +10,45 @@ The abstract `Database Query` class has the following features.
 - Set query parameters in the constructor
 
 ```php
+namespace App\Database\Queries\User;
+
+use App\Models\User;
+use Imunew\Laravel\Database\Queries\Query;
+use RuntimeException;
+
+/**
+ * Class SameName
+ * @package App\Database\Queries\User
+ *
+ * @mixin User
+ */
+class SameName extends Query
+{
+    /**
+     * SameName constructor.
+     * @param array $parameters
+     * @param array $with
+     */
+    public function __construct(array $parameters, array $with = [])
+    {
+        parent::__construct(User::class, $parameters, $with);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function buildQuery(array $parameters)
+    {
+        if (!array_key_exists('name', $parameters)) {
+            throw new RuntimeException('The parameter \'name\' must not be empty.');
+        }
+        $this->whereName($parameters['name']);
+        return $this;
+    }
+}
+```
+
+```php
 use App\Database\Queries\User\SameName;
 
 function findByName(string $name) {
@@ -26,6 +65,7 @@ The Chain class has the following features.
 ```php
 use App\Database\Queries\User\SameName;
 use App\Database\Queries\User\SameEmail;
+use Imunew\Laravel\Database\Queries\Chain;
 
 function firstByNameAndEmail(string $name, string $email) {
     $chain = Chain::all([
