@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Queries;
+namespace Tests\Queries\User;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\WithFaker;
 use Imunew\Laravel\Database\Queries\Chain;
 use Imunew\Laravel\Database\Queries\Query;
-use Tests\Models\User as UserModel;
+use Tests\User as UserModel;
 use Tests\TestCase;
 
 class ChainTest extends TestCase

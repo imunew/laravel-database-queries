@@ -2,6 +2,7 @@
 
 namespace Imunew\Laravel\Database\Queries\Console;
 
+use Exception;
 use Illuminate\Console\GeneratorCommand;
 use InvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
@@ -34,12 +35,12 @@ class MakeCommand extends GeneratorCommand
      */
     public function handle()
     {
-        $model = $this->option('model');
-        if (empty($model)) {
-            throw new InvalidArgumentException('The model must not be empty.');
+        try {
+            return parent::handle();
+        } catch (Exception $exception) {
+            $this->error('['. get_class($exception). '] '. $exception->getMessage());
         }
-
-        return parent::handle();
+        return 1;
     }
 
     /**
@@ -120,10 +121,10 @@ class MakeCommand extends GeneratorCommand
         $model = str_replace('/', '\\', $model);
         if (class_exists($model)) {
             $modelNamespace = $model;
-        } elseif (class_exists($rootNamespace. '\\'. $model)) {
-            $modelNamespace = $rootNamespace. '\\'. $model;
-        } elseif (class_exists($rootNamespace. '\\Models\\'. $model)) {
-            $modelNamespace = $rootNamespace. '\\Models\\'. $model;
+        } elseif (class_exists($rootNamespace. $model)) {
+            $modelNamespace = $rootNamespace. $model;
+        } elseif (class_exists($rootNamespace. 'Models\\'. $model)) {
+            $modelNamespace = $rootNamespace. 'Models\\'. $model;
         }
         if (empty($modelNamespace)) {
             throw new InvalidArgumentException("The Model ('{$model}') class does not exists.");

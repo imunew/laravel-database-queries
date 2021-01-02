@@ -1,14 +1,14 @@
 <?php
 
-namespace Tests\Queries;
+namespace Tests\Queries\User;
 
 use Imunew\Laravel\Database\Queries\Query;
 use RuntimeException;
-use Tests\Models\User;
+use Tests\User;
 
 /**
  * Class SameEmail
- * @package Tests\Queries
+ * @package Tests\Queries\User
  *
  * @mixin User
  */

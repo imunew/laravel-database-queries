@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Models;
+namespace Tests\App;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class User
- * @package Tests\Models
+ * @package Tests\App
  *
  * @property string $name
  * @property string $email

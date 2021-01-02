@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Queries;
+namespace Tests\Queries\User;
 
-use Tests\Models\User as UserModel;
+use Tests\User as UserModel;
 use Tests\TestCase;
 
 class SameEmailTest extends TestCase

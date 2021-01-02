@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Queries;
+namespace Tests\Queries\Team;
 
 use Imunew\Laravel\Database\Queries\Query;
 use RuntimeException;
-use Tests\Models\User;
+use Tests\Models\Team;
 
 /**
  * Class SameName
- * @package Tests\Queries
+ * @package Tests\Queries\Team
  *
- * @mixin User
+ * @mixin Team
  */
 class SameName extends Query
 {
@@ -21,7 +21,7 @@ class SameName extends Query
      */
     public function __construct(array $parameters, array $with = [])
     {
-        parent::__construct(User::class, $parameters, $with);
+        parent::__construct(Team::class, $parameters, $with);
     }
 
     /**
