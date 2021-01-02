@@ -1,6 +1,6 @@
 <?php
 
-use Tests\User;
+use Tests\Models\User;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;

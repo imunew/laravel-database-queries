@@ -1,12 +1,10 @@
 <?php
 
-namespace Tests;
+namespace Tests\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Tests\Models\Team;
-use Tests\Models\TeamUser;
 
 /**
  * Class User

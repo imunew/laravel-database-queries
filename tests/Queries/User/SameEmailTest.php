@@ -2,7 +2,7 @@
 
 namespace Tests\Queries\User;
 
-use Tests\User as UserModel;
+use Tests\Models\User as UserModel;
 use Tests\TestCase;
 
 class SameEmailTest extends TestCase

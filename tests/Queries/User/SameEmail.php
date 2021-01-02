@@ -4,7 +4,7 @@ namespace Tests\Queries\User;
 
 use Imunew\Laravel\Database\Queries\Query;
 use RuntimeException;
-use Tests\User;
+use Tests\Models\User;
 
 /**
  * Class SameEmail

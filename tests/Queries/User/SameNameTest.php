@@ -3,7 +3,7 @@
 namespace Tests\Queries\User;
 
 use InvalidArgumentException;
-use Tests\User as UserModel;
+use Tests\Models\User as UserModel;
 use Tests\Queries\Team\SameName as SameTeamName;
 use Tests\TestCase;
 
