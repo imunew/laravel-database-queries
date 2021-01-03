@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Traits\ForwardsCalls;
 use InvalidArgumentException;
-use RuntimeException;
 
 /**
  * Class Query
@@ -46,7 +45,10 @@ abstract class Query implements Contracts\Query
     public function __construct(string $modelClass, array $parameters, array $with = [])
     {
         if (!is_subclass_of($modelClass, Model::class)) {
-            throw new RuntimeException("{$modelClass} is not instance of Model.");
+            throw new InvalidArgumentException("{$modelClass} is not instance of Model.");
+        }
+        if (!$this->validateParameters($parameters, $errorMessage)) {
+            throw new InvalidArgumentException($errorMessage);
         }
         $this->modelClass = $modelClass;
         $this->parameters = $parameters;
@@ -74,6 +76,13 @@ abstract class Query implements Contracts\Query
         }
         return $this->buildQuery($this->parameters);
     }
+
+    /**
+     * @param array $parameters
+     * @param string|null $errorMessage
+     * @return bool
+     */
+    abstract protected function validateParameters(array $parameters, ?string &$errorMessage);
 
     /**
      * @param array $parameters

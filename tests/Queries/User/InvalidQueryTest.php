@@ -2,7 +2,7 @@
 
 namespace Tests\Queries\User;
 
-use RuntimeException;
+use InvalidArgumentException;
 use Tests\TestCase;
 
 class InvalidQueryTest extends TestCase
@@ -12,7 +12,7 @@ class InvalidQueryTest extends TestCase
      */
     public function invalid_model_class()
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(InvalidArgumentException::class);
         new InvalidQuery([]);
     }
 }

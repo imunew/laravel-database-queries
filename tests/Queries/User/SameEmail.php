@@ -3,7 +3,6 @@
 namespace Tests\Queries\User;
 
 use Imunew\Laravel\Database\Queries\Query;
-use RuntimeException;
 use Tests\Models\User;
 
 /**
@@ -27,11 +26,20 @@ class SameEmail extends Query
     /**
      * {@inheritdoc}
      */
-    protected function buildQuery(array $parameters)
+    protected function validateParameters(array $parameters, ?string &$errorMessage)
     {
         if (!array_key_exists('email', $parameters)) {
-            throw new RuntimeException('The parameter \'email\' must not be empty.');
+            $errorMessage = 'The parameter \'email\' must not be empty.';
+            return false;
         }
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function buildQuery(array $parameters)
+    {
         $this->whereEmail($parameters['email']);
         return $this;
     }

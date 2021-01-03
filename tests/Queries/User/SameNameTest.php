@@ -42,6 +42,15 @@ class SameNameTest extends TestCase
     {
         $sameEmail = new SameEmail(['email' => $this->user->email]);
         $this->expectException(InvalidArgumentException::class);
-        $sameEmail->build(new SameTeamName([]));
+        $sameEmail->build(new SameTeamName(['name' => 'The team']));
+    }
+
+    /**
+     * @test
+     */
+    public function construct_fail_by_invalid_parameters()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        new SameEmail([]);
     }
 }

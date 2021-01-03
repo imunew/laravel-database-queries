@@ -24,6 +24,14 @@ class InvalidQuery extends Query
     /**
      * {@inheritdoc}
      */
+    protected function validateParameters(array $parameters, ?string &$errorMessage)
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function buildQuery(array $parameters)
     {
         return $this;

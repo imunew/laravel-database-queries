@@ -26,6 +26,15 @@ class DummyClass extends Query
     /**
      * {@inheritdoc}
      */
+    protected function validateParameters(array $parameters, ?string &$errorMessage)
+    {
+        // TODO: Implement validateParameters() method.
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function buildQuery(array $parameters)
     {
         // TODO: Implement buildQuery() method.
