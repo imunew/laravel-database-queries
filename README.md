@@ -33,15 +33,24 @@ class SameName extends Query
     {
         parent::__construct(User::class, $parameters, $with);
     }
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected function validateParameters(array $parameters, ?string &$errorMessage)
+    {
+        if (!array_key_exists('name', $parameters)) {
+            $errorMessage = 'The parameter \'name\' must not be empty.';
+            return false;
+        }
+        return true;
+    }
 
     /**
      * {@inheritdoc}
      */
     protected function buildQuery(array $parameters)
     {
-        if (!array_key_exists('name', $parameters)) {
-            throw new RuntimeException('The parameter \'name\' must not be empty.');
-        }
         $this->whereName($parameters['name']);
         return $this;
     }
