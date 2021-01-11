@@ -3,7 +3,6 @@
 namespace Imunew\Laravel\Database\Queries;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Traits\ForwardsCalls;
 use InvalidArgumentException;
@@ -13,12 +12,8 @@ use InvalidArgumentException;
  * @package Imunew\Laravel\Database\Queries
  *
  * @method int count(string $columns = '*')
- * @method Model find(mixed $id, array $columns = ['*'])
- * @method Model findOrFail(mixed $id, array $columns = ['*'])
- * @method Model first(array|string $columns = ['*'])
- * @method Model firstOrFail(array|string $columns = ['*'])
+ * @method bool exists()
  * @method string toSql()
- * @method Model[]|Collection get(array|string $columns = ['*'])
  */
 abstract class Query implements Contracts\Query
 {

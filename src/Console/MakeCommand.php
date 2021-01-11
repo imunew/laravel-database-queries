@@ -9,6 +9,8 @@ use Symfony\Component\Console\Input\InputOption;
 
 class MakeCommand extends GeneratorCommand
 {
+    use GetOption;
+
     /**
      * The console command name.
      *
@@ -78,7 +80,7 @@ class MakeCommand extends GeneratorCommand
     {
         parent::replaceNamespace($stub, $name);
 
-        $model = $this->replaceModel($this->option('model'));
+        $model = $this->replaceModel($this->getOption('model', true));
 
         $stub = str_replace(
             'DummyModelNamespace',
@@ -96,7 +98,7 @@ class MakeCommand extends GeneratorCommand
     {
         $replaced = parent::replaceClass($stub, $name);
 
-        $model = $this->replaceModel($this->option('model'));
+        $model = $this->replaceModel($this->getOption('model', true));
 
         return str_replace(
             'DummyModelClass',
