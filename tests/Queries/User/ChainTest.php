@@ -5,6 +5,7 @@ namespace Tests\Queries\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\WithFaker;
 use Imunew\Laravel\Database\Queries\Chain;
+use Imunew\Laravel\Database\Queries\Query;
 use Tests\Models\User as UserModel;
 use Tests\TestCase;
 
@@ -47,7 +48,7 @@ class ChainTest extends TestCase
             $sameName,
             $sameEmail
         ]);
-        assert($chain instanceof SameEmail);
+        assert($chain instanceof Query);
         $this->assertCount(1, $chain->get());
     }
 }
