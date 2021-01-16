@@ -27,7 +27,7 @@ class SameEmailTest extends TestCase
     public function build()
     {
         $sameEmail = new SameEmail(['email' => $this->user->email]);
-        $user = $sameEmail->build()->first();
+        $user = $sameEmail->first();
         $this->assertInstanceOf(UserModel::class, $user);
         assert($user instanceof UserModel);
         $this->assertSame($this->user->email, $user->email);

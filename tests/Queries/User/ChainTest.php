@@ -39,12 +39,9 @@ class ChainTest extends TestCase
     public function build()
     {
         $sameName = new SameName(['name' => $this->user->name]);
-        // All users have the same name.
-        $this->assertCount($this->users->count(), $sameName->build()->get());
 
         // An unique user should be found by email.
         $sameEmail = new SameEmail(['email' => $this->user->email]);
-        $this->assertCount(1, $sameEmail->build()->get());
 
         // An unique user should be found by name and email.
         $chain = Chain::all([
@@ -52,6 +49,6 @@ class ChainTest extends TestCase
             $sameEmail
         ]);
         assert($chain instanceof Query);
-        $this->assertCount(1, $chain->build()->get());
+        $this->assertCount(1, $chain->get());
     }
 }

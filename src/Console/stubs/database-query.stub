@@ -11,12 +11,6 @@ use Imunew\Laravel\Database\Queries\Query;
  * @package DummyNamespace
  *
  * @mixin DummyModelClass
- *
- * @method DummyModelClass find(mixed $id, array $columns = ['*'])
- * @method DummyModelClass findOrFail(mixed $id, array $columns = ['*'])
- * @method DummyModelClass first(array|string $columns = ['*'])
- * @method DummyModelClass firstOrFail(array|string $columns = ['*'])
- * @method DummyModelClass[]|Collection get(array|string $columns = ['*'])
  */
 class DummyClass extends Query
 {
