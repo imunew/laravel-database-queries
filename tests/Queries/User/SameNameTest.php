@@ -2,6 +2,7 @@
 
 namespace Tests\Queries\User;
 
+use BadMethodCallException;
 use InvalidArgumentException;
 use Tests\Models\User as UserModel;
 use Tests\Queries\Team\SameName as SameTeamName;
@@ -29,7 +30,7 @@ class SameNameTest extends TestCase
     public function build()
     {
         $sameName = new SameName(['name' => $this->user->name], ['teams']);
-        $user = $sameName->build()->first();
+        $user = $sameName->first();
         $this->assertInstanceOf(UserModel::class, $user);
         assert($user instanceof UserModel);
         $this->assertSame($this->user->name, $user->name);
@@ -52,5 +53,15 @@ class SameNameTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         new SameEmail([]);
+    }
+
+    /**
+     * @test
+     */
+    public function fail_by_call_write_method()
+    {
+        $sameName = new SameName(['name' => $this->user->name]);
+        $this->expectException(BadMethodCallException::class);
+        $sameName->save();
     }
 }
